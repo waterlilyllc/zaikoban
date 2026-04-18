@@ -33,3 +33,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Claude Code のローカル設定（エージェント固有・個人用）
+/.claude/
+/claude.md
