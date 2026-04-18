@@ -37,3 +37,9 @@
 # Claude Code のローカル設定（エージェント固有・個人用）
 /.claude/
 /claude.md
+
+# Playwright MCP の一時ファイル
+/.playwright-mcp/
+
+# 手動 DoD 時の一時スクリーンショット
+/home_*.png

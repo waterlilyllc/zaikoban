@@ -35,9 +35,16 @@ Kiro-style Spec Driven Development implementation on AI-DLC (AI Development Life
 
 ## Development Rules
 - 3-phase approval workflow: Requirements → Design → Tasks → Implementation
-- Human review required each phase; use `-y` only for intentional fast-track
 - Keep steering current and verify alignment with `/kiro:spec-status`
 - Follow the user's instructions precisely, and within that scope act autonomously: gather the necessary context and complete the requested work end-to-end in this run, asking questions only when essential information is missing or the instructions are critically ambiguous.
+
+## Ticket Execution Policy（本プロジェクトのデフォルト）
+- 各 GitHub チケットに着手したら、Kiro 全フェーズを **一気通貫** で実装完了まで通す。
+  1. `/kiro:spec-init` → 2. `/kiro:spec-requirements` → 3. `/kiro:validate-gap` → 4. `/kiro:spec-design -y` → 5. `/kiro:validate-design` → 6. `/kiro:spec-tasks -y` → 7. `/kiro:spec-impl` → 8. `/kiro:validate-impl`
+- **設計は手厚く（SDD）**: データモデル・コンポーネント分割・インターフェース・例外系・非機能要件（アクセシビリティ / パフォーマンス / セキュリティ）まで design.md に書き切る。
+- **実装は TDD 厳守**: Red（失敗テスト先行）→ Green（最小実装）→ Refactor の順で 1 単位ずつ進める。テスト無しの実装は原則禁止。
+- **承認**: 各フェーズ完了時に内容サマリーを提示するが、ユーザーからの停止指示がなければ `-y` で継続。明示的な停止または修正要求のみ待つ。
+- 完了時にコミット・Issue クローズ方針を提案する。
 
 ## Steering Configuration
 - Load entire `.kiro/steering/` as project memory
