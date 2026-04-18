@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>備蓄一覧 - 在庫番</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb873",
+                    "surface-tint": "#426087",
+                    "inverse-on-surface": "#f3f0ea",
+                    "primary-fixed": "#d3e3ff",
+                    "surface-container-high": "#ebe8e2",
+                    "primary-fixed-dim": "#aac8f5",
+                    "on-secondary-fixed": "#04210d",
+                    "error-container": "#ffdad6",
+                    "outline": "#73777f",
+                    "on-secondary-container": "#4c6a50",
+                    "tertiary": "#784400",
+                    "surface-variant": "#e5e2dc",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#1c1c18",
+                    "primary": "#335278",
+                    "on-primary-container": "#dde9ff",
+                    "outline-variant": "#c3c6cf",
+                    "tertiary-container": "#9a5902",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#c9ebcb",
+                    "inverse-primary": "#aac8f5",
+                    "background": "#fcf9f3",
+                    "inverse-surface": "#31312d",
+                    "secondary": "#48654c",
+                    "surface-container-low": "#f6f3ed",
+                    "on-surface": "#1c1c18",
+                    "on-tertiary-fixed-variant": "#6a3b00",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#e5e2dc",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#c7e8c8",
+                    "surface-bright": "#fcf9f3",
+                    "on-primary-fixed-variant": "#29486e",
+                    "surface": "#fcf9f3",
+                    "tertiary-fixed": "#ffdcbf",
+                    "surface-container": "#f0eee8",
+                    "on-primary-fixed": "#001c39",
+                    "surface-dim": "#dcdad4",
+                    "on-secondary-fixed-variant": "#304d35",
+                    "on-surface-variant": "#43474e",
+                    "on-tertiary-fixed": "#2d1600",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "primary-container": "#4c6a92",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#aecfaf",
+                    "on-tertiary-container": "#ffe4cf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {},
+            "fontFamily": {
+                    "headline": [
+                            "Plus Jakarta Sans", "Noto Sans JP"
+                    ],
+                    "body": [
+                            "Noto Sans JP"
+                    ],
+                    "label": [
+                            "Plus Jakarta Sans", "Noto Sans JP"
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col relative pb-28 md:hidden">
+<header class="bg-[#FCF9F3] dark:bg-slate-950 sticky top-0 z-40 bg-[#F6F3ED] dark:bg-slate-900 flex items-center justify-between px-6 py-4 w-full max-w-none">
+<button class="text-[#335278] dark:text-[#4C6A92] hover:bg-[#EBE8E2] dark:hover:bg-slate-800 transition-colors p-2 -ml-2 rounded-full active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-[#335278] dark:text-[#4C6A92] font-['Plus_Jakarta_Sans','Noto_Sans_JP'] tracking-[0.05em] leading-relaxed absolute left-1/2 -translate-x-1/2">備蓄</h1>
+<div class="w-10"></div>
+</header>
+<div class="px-4 pt-4 pb-2">
+<div class="bg-surface-container-lowest rounded-xl flex items-center px-4 py-3 shadow-[0_4px_16px_-4px_rgba(47,52,48,0.03)]">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="bg-transparent border-none p-0 w-full text-on-surface focus:ring-0 focus:outline-none placeholder:text-on-surface-variant font-medium text-sm" placeholder="何を探しますか？" type="text"/>
+</div>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar px-4 py-2 gap-2 snap-x">
+<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-full text-sm font-bold whitespace-nowrap snap-start flex-shrink-0">すべて</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap snap-start flex-shrink-0 hover:bg-surface-variant transition-colors">食品</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap snap-start flex-shrink-0 hover:bg-surface-variant transition-colors">日用品</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap snap-start flex-shrink-0 hover:bg-surface-variant transition-colors">飲料</button>
+<button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap snap-start flex-shrink-0 hover:bg-surface-variant transition-colors">防災</button>
+</div>
+<main class="flex-1 px-4 py-4 flex flex-col gap-4">
+<article class="bg-surface-container-lowest rounded-2xl p-4 flex flex-col gap-4 shadow-[0_8px_24px_-8px_rgba(47,52,48,0.04)] relative active:scale-[0.98] transition-transform">
+<a class="absolute inset-0 z-0 rounded-2xl" href="#"></a>
+<div class="flex items-start gap-4">
+<img alt="" class="w-[56px] h-[56px] rounded-xl object-cover bg-surface-container flex-shrink-0 relative z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwDIPeJRGmtaVkQUKHzBRb5cGrPzGtVgnr7mNlrP6A5dNP0KvQI3GqEuaxS2X5d6hi7jrfc-H4zCnLUcukcb57YHU9-SYZ-FxLuEqClw4E6KKUwgx8cJFR8rerP0qJOslySGqfOkcs53gnZolf3wf66CHgfWlJVSGqn68yMYmvD6g7MKc07dNEDTs3gmeNkl0hG4_sXaaAzO0JVltX9Wr5sN01-cJ_R7AGgKAXQa9OUP1kzcYTTVqNfylkENRnhWIvyimhC2zrjsT8"/>
+<div class="flex flex-col flex-1 min-w-0 pointer-events-none">
+<div class="flex justify-between items-start mb-1">
+<h2 class="text-base font-bold text-on-surface truncate pr-2">牛乳</h2>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">chevron_right</span>
+</div>
+<div class="flex items-center gap-1.5 text-xs text-on-surface-variant mb-2 font-medium">
+<span class="material-symbols-outlined text-[14px]">kitchen</span>
+<span>冷蔵庫</span>
+</div>
+<div class="flex items-end gap-1.5">
+<span class="font-headline font-bold text-[24px] leading-none text-primary tracking-tight">1/4</span>
+<span class="text-[11px] text-on-surface-variant font-medium pb-0.5">残り</span>
+<div class="ml-auto bg-error-container text-on-error-container px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wide">残り2日</div>
+</div>
+</div>
+</div>
+<div class="mt-1 relative z-10">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-xl text-sm font-bold shadow-sm active:bg-primary-container/80 transition-colors flex items-center justify-center gap-2">使った</button>
+</div>
+</article>
+</main>
+<button class="fixed bottom-24 right-4 bg-primary text-on-primary w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_12px_32px_-4px_rgba(47,52,48,0.2)] z-40 hover:bg-primary/90 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+<nav class="bg-[#FFFFFF] dark:bg-slate-900 border-t border-[#F0EEE8]/20 shadow-[0_-4px_20px_-4px_rgba(47,52,48,0.06)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-safe rounded-t-2xl font-['Plus_Jakarta_Sans','Noto_Sans_JP'] text-[10px] font-medium pb-6">
+<a class="flex flex-col items-center justify-center text-[#43474E] dark:text-slate-400 px-4 py-1.5 hover:text-[#335278] dark:hover:text-[#4C6A92] transition-colors" href="#"><span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home</span><span>ホーム</span></a>
+<a class="flex flex-col items-center justify-center bg-[#4C6A92] text-white rounded-2xl px-4 py-1.5 opacity-100 active:opacity-80 duration-150 transition-opacity" href="#"><span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">inventory_2</span><span>備蓄一覧</span></a>
+<a class="flex flex-col items-center justify-center text-[#43474E] dark:text-slate-400 px-4 py-1.5 hover:text-[#335278] dark:hover:text-[#4C6A92] transition-colors" href="#"><span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">history</span><span>履歴</span></a>
+<a class="flex flex-col items-center justify-center text-[#43474E] dark:text-slate-400 px-4 py-1.5 hover:text-[#335278] dark:hover:text-[#4C6A92] transition-colors" href="#"><span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">settings</span><span>設定</span></a>
+</nav>
+</body></html>
